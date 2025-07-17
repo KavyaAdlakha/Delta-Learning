@@ -1,0 +1,17 @@
+under standing folder structure ----------->
+1. node modules --> it is our all node dependenciees
+2. public --> public folder doesn't conatain anything as such it only contain inly img file right now so take it as img folder
+3. src --> source folder contain our major logic where w ewriite it. (in source folder we have one more folder)
+3.1 assests --> it just contain only image of react
+
+genrally when we have to write a code of react wee don not write in index.html nor main.jsx we write it on app.jsx
+---- work of index.html is to create root and render it to main.jsx
+
+--->  in app.jsx function is our app compone and what will be this  component return it will become the UI
+
+----> Our First Component :- component is a reusable and indepent piece of code (the highest level of component we have ina app is itself app component)
+
+-----2nd modules
+---> 1. when we want to pass no. in props we can't pass them directly we have to pass them in {} curly braces
+
+--->4. conditionals
