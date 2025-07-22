@@ -5,8 +5,8 @@ function App() {
   return (
     <>
      <h1>States in React</h1> 
-     {/* <Counter/> */}
-     <LikeButton/>
+     <Counter/>
+     {/* <LikeButton/> */}
     </>
   );
 }
