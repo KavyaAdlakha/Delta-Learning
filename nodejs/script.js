@@ -11,10 +11,12 @@
 // for (let i=2; i<args.length; i++) {
 //     console.log("hello & welcome", args[i])
 // }
-
+ 
 const math = require('./math')
 console.log(math.sum(5,6))
 console.log(math.mul(5,6))
 console.log(math.g)
 console.log(math.PI)
 
+const info = require("./Fruits")
+console.log(info)
