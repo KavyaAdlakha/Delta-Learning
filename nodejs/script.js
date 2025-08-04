@@ -12,11 +12,16 @@
 //     console.log("hello & welcome", args[i])
 // }
  
-const math = require('./math')
-console.log(math.sum(5,6))
-console.log(math.mul(5,6))
-console.log(math.g)
-console.log(math.PI)
+// const math = require('./math')
+// console.log(math.sum(5,6))
+// console.log(math.mul(5,6))
+// console.log(math.g)
+// console.log(math.PI)
 
-const info = require("./Fruits")
-console.log(info)
+//----------transfering data from one directory from another
+// const info = require("./Fruits")
+// console.log(info)
+
+//-------------use of import
+import {sum, PI} from './math.js'
+console.log(sum(6,4))
