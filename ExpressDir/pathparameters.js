@@ -13,6 +13,11 @@ app.get('/:username/:id', (req,res) => {
     res.send(htmlStr)
 })
 
+app.get("/search", (req,res) => {
+    let {q} = req.query
+    res.send(`search result for query: ${q}`)
+})
+
 app.listen(port, ()=>{
     console.log(`app is listening on port ${port}`)
 })
