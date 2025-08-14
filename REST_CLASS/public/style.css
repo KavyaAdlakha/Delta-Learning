@@ -1,31 +1,3 @@
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-header{
-    background-color: blanchedalmond;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-h1{
-    color: maroon;
-}
-
-.post{
-    background-color: blanchedalmond;
-    margin: 20px 5px;
-    padding: 10px;
-    height: auto;
-}
-
-.user{
-    font-style: italic;
-} */
-
 /* Reset some default browser styles */
 * {
     margin: 0;
@@ -124,3 +96,59 @@ button a {
     width: 100%;
     height: 100%;
 } 
+
+.create-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #b92b27;
+    color: white;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.create-btn:hover {
+    background-color: #9e2320;
+}
+
+.create-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Button container inside each post */
+.btns {
+    display: flex;
+    gap: 0.5rem; /* space between buttons */
+    margin-top: 0.8rem;
+}
+
+/* Smaller post action buttons */
+.btns button {
+    background-color: #b92b27;
+    color: white;
+    padding: 0.4rem 0.8rem; /* smaller padding */
+    font-size: 0.9rem;       /* slightly smaller text */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 0; /* remove auto centering */
+    transition: background-color 0.3s ease;
+}
+
+.btns button:hover {
+    background-color: #9e2320;
+}
+
+/* Link inside post action buttons */
+.btns button a {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
