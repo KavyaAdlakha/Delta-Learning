@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const methdoOverride = require("method-override");
+require("dotenv").config();
+
 
 app.use(methdoOverride("_method"));
 app.use(express.urlencoded({extended: true}))
@@ -13,11 +15,19 @@ app.use(express.static("public"));
 
 
 ///create a connection to database
-const  connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'delta_app',
-    password: ''
+// const  connection = mysql.createConnection({
+//     host: '',
+//     user: 'root',
+//     database: '',
+//     password: ''
+// });
+const port = process.env.PORT || 8080;
+
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
 });
 
 
