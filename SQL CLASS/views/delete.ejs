@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete User</title>
+    <link rel="stylesheet" href="/delete.css">
+</head>
+<body>
+    <header>
+        <h1>UserStack</h1>
+    </header>
+
+    <main>
+        <h2>You are about to delete this user : <%= user.username %></h2>
+        <p>Instruction: for delete the user you have to provide correct email and password.</p>
+        <form method="post" action="/user/<%= user.id %>?_method=DELETE">
+            <input type="email" name="email" placeholder="enter email">
+            <input type="password" name="password" placeholder="enter password">
+            <button>Delete</button>
+        </form>
+    </main>
+    <a href="http://localhost:8080/user/" class="floating-btn">Show All Users</a>
+</body>
+</html>

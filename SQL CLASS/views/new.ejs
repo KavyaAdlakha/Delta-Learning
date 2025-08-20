@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New User</title>
+    <link rel="stylesheet" href="/new.css">
+</head>
+<body>
+    <header>
+        <h1>UserStack</h1>
+    </header>
+     <a href="http://localhost:8080/" class="floating-btn">Home Page</a>
+    <main>
+        <h2>Fill your details</h2>
+        <form method="post" action="/user">
+            <input type="text" name="id" placeholder="enter id">
+            <input type="text" name="username" placeholder="enter username">
+            <input type="email" name="email" placeholder="enter email">
+            <input type="password" name="password" placeholder="enter password">
+            <button>Submit</button>
+        </form>
+    </main>
+</body>
+</html>

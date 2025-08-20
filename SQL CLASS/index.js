@@ -9,6 +9,8 @@ app.use(methdoOverride("_method"));
 app.use(express.urlencoded({extended: true}))
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"))
+app.use(express.static("public"));
+
 
 ///create a connection to database
 const  connection = mysql.createConnection({
@@ -43,6 +45,29 @@ app.get("/", (req,res) => {
     res.send("some error in database")
     }
 });
+
+// ADD new user Route----------------------->
+app.get("/new", (req,res) => {
+    res.render('new.ejs')
+})
+
+//add and update (DB) route -----------------.
+
+app.post("/user",  (req,res) => {
+   let {id, username, email, password} = req.body
+   let q = `INSERT INTO user (id, username, email, password) VALUES (?)`;
+   let data = [id, username, email, password]
+
+   try{
+    connection.query(q, [data], (err, result) => {
+        if (err) throw err;
+        res.redirect('/user')
+    })
+   } catch(err) {
+    console.log(err);
+    res.send("some error in database")
+   }
+})
 
 //Show User------------------------------------->
 
@@ -102,7 +127,53 @@ app.patch("/user/:id", (req,res) => {
     console.log(err);
     res.send("some error in database")
     }
+});
+
+//Delete Route------------------------------>
+app.get("/user/:id/delete", (req,res) => {
+    let {id} = req.params
+    let q = `SELECT * FROM user WHERE id='${id}'`;
+
+    try{
+    connection.query(q, (err, result) => {
+    if (err) throw err;
+    let user = result[0];
+    res.render("delete.ejs", {user});
+    });
+    } catch(err) {
+    console.log(err);
+    res.send("some error in database")  
+    }
 })
+
+// delete and update (DB) Route -------------->
+
+app.delete("/user/:id", (req,res) => {
+     let {id} = req.params
+    let {password, email} = req.body
+    let q = `SELECT * FROM user WHERE id='${id}'`;
+    try{
+        connection.query(q, (err, result) => {
+        if (err) throw err;
+        let user = result[0]
+        if(password != user.password){
+            res.send("WRONG PASSWORD")
+        } else if(email != user.email) {
+            res.send("WRONG EMAIL")
+        } else {
+            let q2 = `DELETE FROM user WHERE id = '${id}'`;
+            connection.query(q2, (err, result) => {
+            if(err) throw err;
+            res.redirect("/user")
+       })
+        }
+        })
+    } catch(err) {
+    console.log(err);
+    res.send("some error in database")
+    }
+})
+
 
 app.listen("8080", () => {
     console.log("server is listening to port 8080")

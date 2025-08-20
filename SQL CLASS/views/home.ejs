@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <link rel="stylesheet" href="/home.css">
 </head>
 <body>
     <header>
-        <h1>Delta App</h1>
+        <h1>UserStack</h1>
     </header>
     <main>
-        <h2>The total number of user are : <%= count %></h2>
-        <button>Join us today!</button>
+        <h2>Registered Users: <%= count %></h2>
+
+        <button><a href="http://localhost:8080/new/">Join us today!</a></button>
+        <a href="http://localhost:8080/user/" class="floating-btn">Show All Users</a>
+
     </main>
 </body>
 </html>
