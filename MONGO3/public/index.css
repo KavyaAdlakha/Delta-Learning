@@ -92,3 +92,33 @@ h3 {
   box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
 
+.action_btn{
+  display: flex;
+  gap: 8px;
+}
+
+.msg form button {
+  background: #4a6cf7;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  margin-top: 8px;
+}
+
+/* Hover effect */
+.msg form button:hover {
+  background: #3452c9;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* Active click effect */
+.msg form button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}

@@ -11,11 +11,15 @@ const chatSchema = new mongoose.Schema({
     },
     msg: {
         type: String,
-        maxLength:50
+        
     },
     created_at: {
         type: Date,
         required: true
+    },
+    updated_at:{
+        type: Date,
+        default: null
     }
 });
 

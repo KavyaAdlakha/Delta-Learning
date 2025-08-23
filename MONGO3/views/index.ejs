@@ -6,6 +6,12 @@
     <title>Echo</title>
     <link rel="stylesheet" href="/index.css">
 </head>
+<script>
+  function confirmDelete() {
+    return confirm("Are you sure you want to delete this chat?");
+  }
+</script>
+
 <body>
     <header>
         <h1>Echo</h1>
@@ -18,8 +24,25 @@
             <p>From: <b><%= chat.from %></b></p>
             <div class="msg">
                 <p><%= chat.msg %></p>
+                <div class="action_btn">
+                <form method="get" action="/chats/<%= chat._id %>/edit">
+                    <button>edit</button>
+                </form>
+                <form method="post" action="/chats/<%= chat._id %>?_method=DELETE" onsubmit="return confirmDelete()">
+                    <button>delete</button>
+                </form>
+                </div>
             </div>
             <p>Recieved By: <b><%= chat.to %></b></p>
+            <hr>
+            <p><%= chat.created_at.toString().split(" ")[4] %></p>
+            <!-- <p><%= chat.created_at.toString().split(" ").slice(0,4).join("-") %></p> -->
+            <% if (chat.updated_at) { %>
+                <p>Last Updated: <%= chat.updated_at.toString().split(" ").slice(0,4).join(" ") %></p>
+            <% } else { %>
+                <p><%= chat.created_at.toString().split(" ").slice(0,4).join(" ") %></p>
+            <% } %>
+            
         </div>
      <% } %> 
      <a href="http://localhost:8080/chats/new" class="create_btn">Write New Chat</a>  
