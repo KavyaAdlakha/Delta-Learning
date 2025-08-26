@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const ExpressError = require("./ExpressError")
 
 // app.use((req,res, next) => {
 //     console.log("hi i am a middleware");
@@ -23,8 +24,7 @@ const checkToken =  (req,res,next) => {
     if(token === "giveaccess"){
         next();
     }
-    // res.send("acess denied!")
-    throw new Error("ACCESS DENIED!")
+    throw new ExpressError(401, "ACCESS DENIED!")
 }
 
 app.get("/api", checkToken, (req,res) => {
@@ -33,15 +33,34 @@ app.get("/api", checkToken, (req,res) => {
 
 app.get("/", (req,res) => {
     res.send("hi i am root")
-})
+});
 
 app.get("/random", (req,res) => {
-    res.status(404).send("this is ranndom page")
+    res.send("this is ranndom page")
 });
+
+//error handling------------------------------>
+app.get("/err", (req,res) => {
+    abc=abc
+});
+
+app.get("/admin", (req,res) => {
+    throw new ExpressError(403, "ACCESS TO ADMIN IS FORBIDDEN")
+})
+
+// app.use((err,req,res,next) => {
+//    console.log("----error----"); 
+//    next(err)
+// })
+
+app.use((err,req,res,next) => {
+    let {status=500, message="Some Error Occured"} = err;
+    res.status(status).send(message);
+})
 
 //404 page
 app.use((req,res) => {
-    res.send("Page Not Found!")
+    res.status(404).send("Page Not Found!")
 })
 
 app.listen(3000, () => {
